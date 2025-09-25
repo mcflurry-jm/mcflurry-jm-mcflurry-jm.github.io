@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+	<title>JM | Portfolio</title>
+	<link rel="icon" type="image/x-icon" href="icons\favicon.ico">
+	<link rel="stylesheet" href="style.css">
+	<!--https://colorhunt.co/palette/37353e44444e715a5ad3dad9//--!>
+	
+    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+          
+</head>
+
+<header>
+</header>
+
+<body>
+	<div class="sidebar">
+		<img src="icons/logo.png">
+
+		<nav>
+		  <a href="#mainHeading">📄 About /</a>
+		  <a href="#projectsNav">📄 Projects /</a>
+		  <a href="#servicesNav">📄 Inspirations /</a>
+		  <a href="#contactNav">📄 Contact /</a>
+		</nav>
+		
+		<!--<button class="sidebar-button">Log In</button>
+		<button class="sidebar-button">Sign Up</button>--!>
+		
+		<div class="bottomNav">
+		<nav>
+		  <a href="mailto:jamie.mcelmurry@outlook.com" style="padding-left: 35px;">    Email</a>
+		  <a href="https://www.linkedin.com/in/jamie-mcelmurry-353457262/" style="padding-left: 35px;">    LinkedIn</a>
+		</nav>
+		</div>
+	</div>
+	
+	<div class="main-content" ><br/>
+		
+		<div class="mainHeading" id="mainHeading">
+			<h1>Welcome /</h1>
+			<h1><p id="datetime"></p>
+			</h1>
+		</div>
+		
+		<div class="intro">
+			<h1>About /</h1>
+			<div class="introPic">
+				<div style="padding:50px">
+					<p>Hi, I'm Jamie. I'm a Computer Science student with a deep and varied interest in IT. From software development to cybersecurity and emerging technologies.</p>
+					<p style="padding-top:20px;">I enjoy exploring different areas of the tech world and continuously expanding my skill set. This website is a reflection of my learning journey, personal projects, and the passion I have for all things tech.</p>
+					<p style="padding-top:20px;">Thanks for stopping by, and feel free to take a look around!</p>
+				</div>
+				<div class="picCard">
+					<img src="images/avatar.webp" style="width:100%">
+					<div class="imgText" >
+						<p>mugshot</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="projects" id="projectsNav">
+			<h1>Projects /</h1>
+			
+			<div class="containerProjects">
+				<div>
+					<a href="file:///C:/Users/Jamie/OneDrive/Desktop/Personal/Website/home.html#mainHeading" style="text-decoration:none; color: white;" >
+					<h4>Project 1 / Personal Website</h4>
+					
+						<p style="padding-top:20px;">The first major development project that i undertook.</p> 
+						<p style="padding-top:10px;">My main goal was to have an area to display my various projects and allow users to contact me.</p>
+						<p style="padding-top:10px;">I believe i have achieved those goals.</p>
+						
+						<p style="padding-top:20px; padding-bottom:10px"><img src="images/websiteOverview.png"></p>
+					</a>
+				</div>
+				<div>
+					<h4>Project 2 / Placeholder Title</h4>
+					<p> Project description</p>
+				</div>
+				<div>
+					<h4>Project 3 / Placeholder Title</h4>
+					<p> Project description</p>
+				</div>
+				<div>
+					<h4>Project 4 / Placeholder Title</h4>
+					<p> Project description</p>
+				</div>
+				<div>
+					<h4>Project 5 / Placeholder Title</h4>
+					<p> Project description</p>
+				</div>
+				<div>
+					<h4>Project 6 / Placeholder Title</h4>
+					<p> Project description</p>
+				</div>
+			
+				
+			</div>
+			<div id="projectsNav"></div>
+		</div>
+		
+		<div class="services" id="servicesNav">
+			<h1>Inspirations /</h1>
+	        <div class="containerServices">
+				<p>Some of my inspirations</p>
+			</div>
+			
+		<div id="servicesNav"></div>
+		</div>
+		
+		<div class="contact" id="contactNav">
+			<h1>Contact /</h1>
+	        <div class="containerContact">
+				<p>Get in touch!</p>
+	        </div>
+			
+			<div id="contactNav"></div>
+		
+		</div>
+		
+		<div class="footer" id="footer">
+	        <p>Developed with</p>
+            <p style="padding:10px;">
+            <i class="devicon-html5-plain colored"></i>
+			<i class="devicon-css3-plain colored"></i>
+            <i class="devicon-javascript-plain colored"></i>
+            </p>
+			<p>by: Jamie McElmurry</p>
+		</div>
+		
+	</div>
+	
+	
+	
+	
+<script>
+  function updateDateTime() {
+    const now = new Date();
+
+    let hours = now.getHours();
+    const minutes = now.getMinutes().toString().padStart(2, '0');
+    const day = now.getDate().toString().padStart(2, '0');
+    const month = (now.getMonth() + 1).toString().padStart(2, '0'); // Months are 0-based
+    const year = now.getFullYear();
+
+    const period = hours >= 12 ? 'PM' : 'AM';
+    hours = hours.toString().padStart(2, '0');
+
+    const formattedDateTime = `${hours}:${minutes}${period} | ${day}/${month}/${year}`;
+    document.getElementById("datetime").innerText = formattedDateTime;
+  }
+
+  // Initial update
+  updateDateTime();
+
+  // Update every minute (60000 ms)
+  setInterval(updateDateTime, 60000);
+  
+  // Change colour of nav text based on href
+  document.addEventListener("DOMContentLoaded", () => {
+    const sections = document.querySelectorAll("#mainHeading, #projectsNav, #servicesNav, #contactNav");
+    const navLinks = document.querySelectorAll(".sidebar nav a");
+
+    const observerOptions = {
+      root: null,
+      threshold: 0.6,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute("id");
+          navLinks.forEach((link) => {
+            link.classList.remove("active");
+            if (link.getAttribute("href") === `#${id}`) {
+              link.classList.add("active");
+            }
+          });
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
+  });
+</script>
+
+</body>
+
+
+</html>
