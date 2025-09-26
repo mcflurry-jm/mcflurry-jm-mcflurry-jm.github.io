@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+	<title>JM | Music</title>
+	<link rel="icon" type="image/x-icon" href="icons\favicon.ico">
+	<link rel="stylesheet" href="style.css">
+	<!--https://colorhunt.co/palette/37353e44444e715a5ad3dad9//--!>
+	
+    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+          
+</head>
+
+<header>
+</header>
+
+<body>
+	<div class="sidebar">
+		<img src="icons/logo.png">
+
+		<nav>
+		  <a href="#mainHeading">📄 Home /</a>
+
+		</nav>
+		
+		<!--<button class="sidebar-button">Log In</button>
+		<button class="sidebar-button">Sign Up</button>--!>
+		
+		<div class="bottomNav">
+		<nav>
+		  <a href="mailto:jamie.mcelmurry@outlook.com" style="padding-left: 35px;">    Email</a>
+		  <a href="https://www.linkedin.com/in/jamie-mcelmurry-353457262/" style="padding-left: 35px;">    LinkedIn</a>
+		</nav>
+		</div>
+	</div>
+	
+	<div class="main-content" ><br/>
+		
+		<div class="mainHeading" id="mainHeading">
+			<h1>Welcome /</h1>
+			<h1><p id="datetime"></p>
+			</h1>
+		</div>
+		
+		
+	</div>
+	
+	
+	
+	
+<script>
+  function updateDateTime() {
+    const now = new Date();
+
+    let hours = now.getHours();
+    const minutes = now.getMinutes().toString().padStart(2, '0');
+    const day = now.getDate().toString().padStart(2, '0');
+    const month = (now.getMonth() + 1).toString().padStart(2, '0'); // Months are 0-based
+    const year = now.getFullYear();
+
+    const period = hours >= 12 ? 'PM' : 'AM';
+    hours = hours.toString().padStart(2, '0');
+
+    const formattedDateTime = `${hours}:${minutes}${period} | ${day}/${month}/${year}`;
+    document.getElementById("datetime").innerText = formattedDateTime;
+  }
+
+  // Initial update
+  updateDateTime();
+
+  // Update every minute (60000 ms)
+  setInterval(updateDateTime, 60000);
+  
+</script>
+
+</body>
+
+
+</html>
