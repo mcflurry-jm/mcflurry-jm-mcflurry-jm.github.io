@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
 	<title>JM | Music</title>
 	<link rel="icon" type="image/x-icon" href="icons\favicon.ico">
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="musicStyle.css">
 	<!--https://colorhunt.co/palette/37353e44444e715a5ad3dad9//--!>
 	
     <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
@@ -44,7 +44,70 @@
 			</h1>
 		</div>
 		
+		<div class="musicContainer">
+			<h1>Music / </h1>
+			
+			<div class="musicContainerGrid1">
+				
+				<div  class="leftGrid" id="image-container">
+					<img src="notes/D4_note.png" alt="Image 1" class="draggable-img" draggable="true">
+					<img src="notes/DSharp4_note.png" alt="Image 3" class="draggable-img" draggable="true">
+					<img src="notes/E4_note.png" alt="Image 2" class="draggable-img" draggable="true">
+					<img src="notes/F4_note.png" alt="Image 2" class="draggable-img" draggable="true">
+					<img src="notes/FSharp4_note.png" alt="Image 3" class="draggable-img" draggable="true">
+					<img src="notes/G4_note.png" alt="Image 1" class="draggable-img" draggable="true">
+					<img src="notes/GSharp4_note.png" alt="Image 3" class="draggable-img" draggable="true">
+					<img src="notes/A4_note.png" alt="Image 1" class="draggable-img" draggable="true">
+					<img src="notes/ASharp4_note.png" alt="Image 3" class="draggable-img" draggable="true">
+					<img src="notes/B4_note.png" alt="Image 2" class="draggable-img" draggable="true">
+					<img src="notes/C5_note.png" alt="Image 3" class="draggable-img" draggable="true">
+					<img src="notes/CSharp5_note.png" alt="Image 3" class="draggable-img" draggable="true">
+					<img src="notes/D5_note.png" alt="Image 1" class="draggable-img" draggable="true">
+					<img src="notes/DSharp5_note.png" alt="Image 3" class="draggable-img" draggable="true">
+					<img src="notes/E5_note.png" alt="Image 2" class="draggable-img" draggable="true">
+					<img src="notes/F5_note.png" alt="Image 2" class="draggable-img" draggable="true">					
+					<img src="notes/FSharp5_note.png" alt="Image 3" class="draggable-img" draggable="true">
+					<img src="notes/G5_note.png" alt="Image 1" class="draggable-img" draggable="true">
+					<img src="notes/GSharp5_note.png" alt="Image 3" class="draggable-img" draggable="true">					
+					<img src="notes/A5_note.png" alt="Image 2" class="draggable-img" draggable="true">
+					<img src="notes/ASharp5_note.png" alt="Image 3" class="draggable-img" draggable="true">
+					<img src="notes/B5_note.png" alt="Image 3" class="draggable-img" draggable="true">
+					<img src="notes/C6_note.png" alt="Image 1" class="draggable-img" draggable="true">
+					<img src="notes/CSharp6_note.png" alt="Image 3" class="draggable-img" draggable="true">
+					<img src="notes/D6_note.png" alt="Image 2" class="draggable-img" draggable="true">
+					<img src="notes/DSharp6_note.png" alt="Image 3" class="draggable-img" draggable="true">
+					<img src="notes/E6_note.png" alt="Image 3" class="draggable-img" draggable="true">
+					<img src="notes/F6_note.png" alt="Image 3" class="draggable-img" draggable="true">
+					<img src="notes/FSharp6_note.png" alt="Image 1" class="draggable-img" draggable="true">
+					<img src="notes/G6_note.png" alt="Image 2" class="draggable-img" draggable="true">
+					<img src="notes/GSharp6_note.png" alt="Image 3" class="draggable-img" draggable="true">
+					
+				</div>
+				
+				<div class="middleGrid">
+					<div class="drop-zone"></div>
+					<div class="drop-zone"></div>
+					<div class="drop-zone"></div>
+					<div class="drop-zone"></div>
+				</div>
+				
+				<div class="rightGrid" id="trash-bin">
+					🗑️ Bin
+				</div>
+			
+			</div>
+		</div>
 		
+		<div class="footer" id="footer">
+	        <p>Developed with</p>
+            <p style="padding:10px;">
+            <i class="devicon-html5-plain colored"></i>
+			<i class="devicon-css3-plain colored"></i>
+            <i class="devicon-javascript-plain colored"></i>
+            </p>
+			<p>by: Jamie McElmurry</p>
+		</div>
+
 	</div>
 	
 	
@@ -65,14 +128,83 @@
 
     const formattedDateTime = `${hours}:${minutes}${period} | ${day}/${month}/${year}`;
     document.getElementById("datetime").innerText = formattedDateTime;
-  }
+	}
 
-  // Initial update
-  updateDateTime();
+	// Initial update
+	updateDateTime();
 
-  // Update every minute (60000 ms)
-  setInterval(updateDateTime, 60000);
+	// Update every minute (60000 ms)
+    setInterval(updateDateTime, 60000);
   
+  
+
+
+  // Initial draggable images
+  const draggableImages = document.querySelectorAll('.draggable-img');
+  draggableImages.forEach(img => {
+    img.addEventListener('dragstart', (ev) => {
+      ev.dataTransfer.setData('text/plain', ev.target.src);
+      ev.dataTransfer.effectAllowed = 'copy';
+    });
+  });
+
+  // Drop zones (where images are cloned to)
+  const dropZones = document.querySelectorAll('.drop-zone');
+  dropZones.forEach(zone => {
+    zone.addEventListener('dragover', (ev) => {
+      ev.preventDefault();
+      ev.dataTransfer.dropEffect = 'copy';
+    });
+
+    zone.addEventListener('dragleave', () => {
+    });
+
+    zone.addEventListener('drop', (ev) => {
+      ev.preventDefault();
+      const imageSrc = ev.dataTransfer.getData('text/plain');
+
+      // Create a cloned image
+      const clonedImage = document.createElement('img');
+      clonedImage.src = imageSrc;
+      clonedImage.alt = "Cloned Image";
+      clonedImage.draggable = true;
+
+      // Allow dragging to the trash
+      clonedImage.addEventListener('dragstart', (ev) => {
+        ev.dataTransfer.setData('text/clone', 'remove'); // Flag for deletion
+        ev.dataTransfer.setData('element-id', '');
+        ev.dataTransfer.setDragImage(clonedImage, 50, 50); // Optional visual
+        ev.target.classList.add('being-dragged');
+      });
+
+      zone.appendChild(clonedImage);
+    });
+  });
+
+	  // Trash Bin logic
+	  const trashBin = document.getElementById('trash-bin');
+	  trashBin.addEventListener('dragover', (ev) => {
+		ev.preventDefault();
+		ev.dataTransfer.dropEffect = 'move';
+	  });
+
+	  trashBin.addEventListener('dragleave', () => {
+	  });
+
+	  trashBin.addEventListener('drop', (ev) => {
+		ev.preventDefault();
+
+		// Find the dragged element being removed
+		const draggedElement = document.querySelector('.being-dragged');
+		if (draggedElement) {
+		  draggedElement.remove(); // Remove it
+		}
+
+	  });
+
+
+
+
 </script>
 
 </body>

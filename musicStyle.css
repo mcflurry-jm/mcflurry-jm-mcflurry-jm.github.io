@@ -122,6 +122,112 @@ h4{
   font-weight: bold;
 }
 
+.drop-zone {
+  width: 200px; /* Match the image width */
+  min-height: 300px;
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  padding: 0;
+  gap: 0; /* no vertical spacing */
+}
+
+/*.drop-zone {
+  width: 200px;
+  min-height: 300px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch; /* ensures images stretch to full width 
+  justify-content: flex-start;
+  padding: 0;
+  gap: 0;
+}*/
+
+.drop-zone img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  margin: 0;
+  padding: 0;
+  border: none;
+  line-height: 0; /* key fix */
+}
+
+.drop-zone img:first-child {
+  margin-top: 0;
+}
+.drop-zone img:last-child {
+  margin-bottom: 0;
+}
+
+
+
+
+
+
+.musicContainer{
+  padding:20px;
+  padding-left:60px;
+  padding-top:100px;
+  padding-bottom:40px;
+  padding-right:60px;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: #424242;
+  min-height: 100vh;
+}
+
+.musicContainer p {
+	font-size: 20px;
+	color:#7e7e7e;
+}
+
+.musicContainerGrid1{
+	padding-top:80px;
+	display: grid;
+	column-gap: 40px;
+	grid-template-columns: auto auto auto;
+
+	
+}
+
+.leftGrid{
+	width:220px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #424242;
+}
+
+.middleGrid {
+  display: flex; /* was display: inline */
+  justify-content: center;
+  align-items: flex-start;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #424242;
+}
+
+
+.rightGrid{
+	width:100px;
+	length:40px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #424242;
+	color:black;
+	background:maroon;
+}
+
+
+
+
+
+
+
 
 .footer{
   text-align:center;
